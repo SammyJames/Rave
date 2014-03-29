@@ -1,10 +1,10 @@
 RaveModules = 
 {
-    Timestamps = 'Timestamps',
+    Timestamps = 'Rave.Timestamps',
 
 }
 
 RaveCallbacks = 
 {
-    Loaded = 'Loaded',
+    Loaded = 'Rave.Loaded',
 }
