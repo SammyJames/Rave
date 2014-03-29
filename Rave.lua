@@ -71,5 +71,5 @@ function Rave:HandleEvent( event, ... )
 end
 
 function LetsRave( control )
-    Rave:Initialize( contorl )
+    Rave:Initialize( control )
 end
