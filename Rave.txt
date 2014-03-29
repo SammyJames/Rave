@@ -1,0 +1,14 @@
+## Title: Rave - by Pawkette
+## APIVersion: 100003
+## OptionalDependsOn: LibStub LibMediaProvider-1.0 LibAddonMenu-1.0 LibAnimation-1.0
+## SavedVariables: RAVE_DB
+
+Libs/LibStub/LibStub.lua
+Libs/LibMediaProvider-1.0/LibMediaProvider-1.0.lua
+Libs/LibAddonMenu-1.0/LibAddonMenu-1.0.lua
+Libs/LibAnimation-1.0/LibAnimation.lua
+
+Hooks/ChatReplacement.lua
+
+Rave.lua
+Rave.xml
