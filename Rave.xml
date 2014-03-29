@@ -1,2 +1,7 @@
 <GuiXml>
+    <Controls>
+        <TopLevelControl name="Rave" mouseEnabled="false" clampedToScreen="true" movable="false">
+            <OnInitialized>LetsRave( self )</OnInitialized>
+        </TopLevelControl>
+    </Controls>
 </GuiXml>

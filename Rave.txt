@@ -8,6 +8,8 @@ Libs/LibMediaProvider-1.0/LibMediaProvider-1.0.lua
 Libs/LibAddonMenu-1.0/LibAddonMenu-1.0.lua
 Libs/LibAnimation-1.0/LibAnimation.lua
 
+Constants.lua
+
 Hooks/ChatReplacement.lua
 
 Rave.lua
