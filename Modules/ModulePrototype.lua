@@ -15,18 +15,16 @@ function ModulePrototype:Initialize( identity, version )
 end
 
 function ModulePrototype:Enable()
-    -- body
 end
 
 function ModulePrototype:Disable()
-    -- body
 end
 
-function ModulePrototype:SetValue( key, value )
+function ModulePrototype:SetSetting( key, value )
     self.db[ key ] = value
 end
 
-function ModulePrototype:GetValue( key )
+function ModulePrototype:GetSetting( key )
     return self.db[ key ]
 end
 
@@ -39,7 +37,7 @@ function ModulePrototype:UnregisterEvent( event, callback )
 end
 
 function ModulePrototype:OnUpdate( frameTime )
-    
+
 end
 
 Rave.ModulePrototype = ModulePrototype

@@ -19,3 +19,4 @@ Hooks/ChatReplacement.lua
 
 Rave.lua
 Rave.xml
+Bindings.xml

@@ -30,6 +30,9 @@ function Rave:HandleAddonLoaded( addon )
     CBM:FireCallbacks( Constants.Callbacks.Loaded )
 end
 
+function Rave:KeyUp( keyId )
+end
+
 function Rave:OnUpdate( frameTime )
     if ( not #self.Modules ) then
         return
