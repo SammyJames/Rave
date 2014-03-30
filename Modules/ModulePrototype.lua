@@ -1,22 +1,24 @@
 local ZO_Object         = ZO_Object
+local Rave              = Rave
 local ModulePrototype   = ZO_Object:Subclass()
-local CBM               = CALLBACK_MANAGER
 
-function ModulePrototype:New()
+function ModulePrototype:New( identity, version )
     local result = ZO_Object.New( self )
-    result:Initialize()
+    result:Initialize( identity, version )
     return result
 end
 
-function ModulePrototype:Initialize()
-    self.db = {}
+function ModulePrototype:Initialize( identity, version )
+    self.__identity = identity
+    self.__version  = version
+    self.db         = Rave:GetModuleSettings( identity )
 end
 
-function ModulePrototype:Enable( ... )
+function ModulePrototype:Enable()
     -- body
 end
 
-function ModulePrototype:Disable( ... )
+function ModulePrototype:Disable()
     -- body
 end
 
@@ -27,3 +29,17 @@ end
 function ModulePrototype:GetValue( key )
     return self.db[ key ]
 end
+
+function ModulePrototype:RegisterEvent( event, callback )
+    Rave:RegisterEvent( event, callback )
+end
+
+function ModulePrototype:UnregisterEvent( event, callback )
+    Rave:UnregisterEvent( event, callback )
+end
+
+function ModulePrototype:OnUpdate( frameTime )
+    
+end
+
+Rave.ModulePrototype = ModulePrototype

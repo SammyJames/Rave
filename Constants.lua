@@ -1,10 +1,13 @@
-RaveModules = 
+local Rave      = Rave
+local Constants = Rave.Constants
+
+Constants.Modules = 
 {
     Timestamps = 'Rave.Timestamps',
-
+    Quick      = 'Rave.Quick'
 }
 
-RaveCallbacks = 
+Constants.Callbacks = 
 {
     Loaded = 'Rave.Loaded',
 }
