@@ -1,7 +1,38 @@
 <GuiXml>
     <Controls>
-        <TopLevelControl name="Rave" mouseEnabled="false" clampedToScreen="true" movable="false">
-            <OnInitialized>LetsRave( self )</OnInitialized>
-        </TopLevelControl>
+        <TopLevelControl name="RAVE_FRAME" mouseEnabled="true" clampedToScreen="true" movable="true">
+            <OnInitialized>Rave:Initialize( self )</OnInitialized>
+            <Dimensions x="350" y="155" />
+            <Anchor point="BOTTOMLEFT" offsetX="8" offsetY="-50" />
+
+            <Controls>
+                <Backdrop name="$(parent)Bg">
+                    <Anchor point="TOPLEFT" offsetX="-75" offsetY="-75" />
+                    <Anchor point="BOTTOMRIGHT" offsetX="95" offsetY="75" />
+
+                    <Edge file="EsoUI/Art/ChatWindow/chat_BG_edge.dds" edgeFileWidth="128" edgeFileHeight="16" />
+                    <Center file="EsoUI/Art/ChatWindow/chat_BG_center.dds" />
+                </Backdrop>
+
+                <TextBuffer name="$(parent)Buffer" font="ZoFontChat" maxHistoryLines="200" mouseEnabled="true">
+                    <Anchor point="TOPLEFT" offsetX="8" offsetY="8" />
+                    <Anchor point="BOTTOMRIGHT" offsetX="-8" offsetY="-8" />
+                    <LineFade fadeBegin="60" fadeDuration="2" />
+                    
+                    <OnMouseEnter>
+                        ZO_ChatSystem_OnMouseEnter(self:GetParent():GetParent():GetParent())
+                    </OnMouseEnter>
+                    
+                    <OnLinkClicked>
+                        ZO_ChatSystem_OnLinkClicked(linkData, linkText, button)
+                    </OnLinkClicked>
+                </TextBuffer>
+
+                <EditBox name="$(parent)Edit" mouseEnabled="true" maxInputCharacters="1020" inheritAlpha="false">
+                    <Anchor point="BOTTOMLEFT" relativeTo="$(parent)" relativePoint="TOPLEFT" />
+                    <Anchor point="BOTTOMRIGHT" relativeTo="$(parent)" relativePoint="TOPRIGHT" />
+                </EditBox>
+            </Controls>
+        </TopLevelControl>     
     </Controls>
 </GuiXml>

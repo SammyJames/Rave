@@ -1,21 +1,22 @@
 <Bindings>
   <Layer name="General">
     <Category name="Rave">
-      <Action name="GUILD_1">
+      <Action name="RAVE_GUILD1">
         <Up>Rave:KeyUp( Rave.Constants.Keys.Guild1 )</Up>
       </Action>
-      <Action name="GUILD_2">
+      <Action name="RAVE_GUILD2">
         <Up>Rave:KeyUp( Rave.Constants.Keys.Guild2 )</Up>
       </Action>
-      <Action name="GUILD_3">
+      <Action name="RAVE_GUILD3">
         <Up>Rave:KeyUp( Rave.Constants.Keys.Guild3 )</Up>
       </Action>
-      <Action name="GUILD_4">
+      <Action name="RAVE_GUILD4">
         <Up>Rave:KeyUp( Rave.Constants.Keys.Guild4 )</Up>
       </Action>
-      <Action name="GUILD_5">
+      <Action name="RAVE_GUILD5">
         <Up>Rave:KeyUp( Rave.Constants.Keys.Guild5 )</Up>
       </Action>
     </Category>
   </Layer>
 </Bindings>
+ 

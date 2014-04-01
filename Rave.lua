@@ -12,12 +12,16 @@ local tinsert       = table.insert
 local tremove       = table.remove
 local ZO_SavedVars  = ZO_SavedVars
 local CBM           = CALLBACK_MANAGER
+local LINK_HANDLER  = LINK_HANDLER
 
 function Rave:Initialize( control )
-    self.control = control
-    self.control:SetHandler( 'OnUpdate', function( ... ) self:OnUpdate( ... ) end )
+    self.Window:Initialize( control )
+    self.Edit:Initialize( control:GetNamedChild( 'Edit' ) )
 
-    self:RegisterEvent( EVENT_ADD_ON_LOADED, function( ... ) self:HandleAddonLoaded( ... ) end )
+    self:RegisterEvent( EVENT_ADD_ON_LOADED,            function( ... ) self:HandleAddonLoaded( ... )       end )
+    self:RegisterEvent( EVENT_CHAT_MESSAGE_CHANNEL,     function( ... ) self:HandleChatMessage( ... )       end )
+    self:RegisterEvent( EVENT_CHAT_CHANNEL_JOIN,        function( ... ) self:HandleChatChannelJoin( ... )   end )
+    self:RegisterEvent( EVENT_CHAT_CHANNEL_LEAVE,       function( ... ) self:HandleChatChannelLeave( ... )  end )
 end
 
 function Rave:HandleAddonLoaded( addon )
@@ -27,10 +31,13 @@ function Rave:HandleAddonLoaded( addon )
 
     self.db = ZO_SavedVars:NewAccountWide( 'RAVE_DB', kVersion, nil, nil )
 
-    CBM:FireCallbacks( Constants.Callbacks.Loaded )
-end
+    ZO_CreateStringId("SI_BINDING_NAME_RAVE_GUILD1", "Guild 1")
+    ZO_CreateStringId("SI_BINDING_NAME_RAVE_GUILD2", "Guild 2")
+    ZO_CreateStringId("SI_BINDING_NAME_RAVE_GUILD3", "Guild 3")
+    ZO_CreateStringId("SI_BINDING_NAME_RAVE_GUILD4", "Guild 4")
+    ZO_CreateStringId("SI_BINDING_NAME_RAVE_GUILD5", "Guild 5")
 
-function Rave:KeyUp( keyId )
+    CBM:FireCallbacks( Constants.Callbacks.Loaded )
 end
 
 function Rave:OnUpdate( frameTime )
@@ -49,6 +56,7 @@ function Rave:RegisterModule( moduleId, module, version )
         return
     end
 
+    print( 'Rave module registered %s', tostring( moduleId ) )
     self.Modules[ moduleId ] = module:New( moduleId, version )
 end
 
@@ -66,7 +74,7 @@ function Rave:RegisterEvent( event, callback )
     end
 
     tinsert( self.EventRegistry[ event ], callback )
-    self.control:RegisterForEvent( event, function( ... ) self:HandleEvent( ... ) end )
+    self.Window:RegisterEvent( event, function( ... ) self:HandleEvent( ... ) end )
 end
 
 function Rave:UnregisterEvent( event, callback )
@@ -110,6 +118,43 @@ function Rave:SetModuleSettings( moduleId, settings )
     self.db[ moduleId ] = settings
 end
 
-function LetsRave( control )
-    Rave:Initialize( control )
+function Rave:RegisterKey( keyId, callback )
+    if ( self.KeyRegistry[ keyId ] ) then
+        print( 'This key is already registered, sorry.' )
+        return
+    end
+
+    self.KeyRegistry[ keyId ] = callback
+end
+
+function Rave:UnregisterKey( keyId, callback )
+    if ( not self.KeyRegistry[ keyId ] ) then
+        return
+    end
+
+    self.KeyRegistry[ keyId ] = nil
+end
+
+function Rave:KeyUp( keyId )
+    if ( not self.KeyRegistry[ keyId ] ) then
+        return
+    end
+
+    self.KeyRegistry[ keyId ]()
+end
+
+function Rave:HandleChatMessage( messageType, from, text )
+
+end
+
+function Rave:HandleChatChannelJoin( ... )
+    -- body
+end
+
+function Rave:HandleChatChannelLeave( ... )
+    -- body
+end
+
+function Rave:StartChatInput( text, channel, target )
+    -- body
 end

@@ -14,9 +14,13 @@ Constants.lua
 Modules/ModulePrototype.lua
 Modules/Quick.lua
 Modules/Timestamps.lua
+Modules/Format.lua
+Modules/Spam.lua
 
-Hooks/ChatReplacement.lua
-
+Edit.lua
+Window.lua
 Rave.lua
 Rave.xml
 Bindings.xml
+
+Hooks/ChatReplacement.lua

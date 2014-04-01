@@ -40,4 +40,12 @@ function ModulePrototype:OnUpdate( frameTime )
 
 end
 
+function ModulePrototype:RegisterKey( keyId, callback )
+    Rave:RegisterKey( keyId, callback )
+end
+
+function ModulePrototype:UnregisterKey( keyId, callback )
+    Rave:UnregisterKey( keyId, callback )
+end
+
 Rave.ModulePrototype = ModulePrototype

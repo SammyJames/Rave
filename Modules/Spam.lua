@@ -1,10 +1,10 @@
 local ModulePrototype   = Rave.ModulePrototype
-local Timestamps        = ModulePrototype:Subclass()
+local Spam              = ModulePrototype:Subclass()
 local Constants         = Rave.Constants
 local CBM               = CALLBACK_MANAGER
 
 CBM:RegisterCallback( Constants.Callbacks.Loaded, 
     function() 
-        Rave:RegisterModule( Constants.Modules.Timestamps, Timestamps, 1.0 )
+        Rave:RegisterModule( Constants.Modules.Spam, Spam, 1.0 )
     end
 )
