@@ -18,14 +18,6 @@
                     <Anchor point="TOPLEFT" offsetX="8" offsetY="8" />
                     <Anchor point="BOTTOMRIGHT" offsetX="-8" offsetY="-8" />
                     <LineFade fadeBegin="60" fadeDuration="2" />
-                    
-                    <OnMouseEnter>
-                        ZO_ChatSystem_OnMouseEnter(self:GetParent():GetParent():GetParent())
-                    </OnMouseEnter>
-                    
-                    <OnLinkClicked>
-                        ZO_ChatSystem_OnLinkClicked(linkData, linkText, button)
-                    </OnLinkClicked>
                 </TextBuffer>
 
                 <EditBox name="$(parent)Edit" mouseEnabled="true" maxInputCharacters="1020" inheritAlpha="false">
